@@ -34,17 +34,29 @@ function App() {
         settemp((temp* 9/5) + 32)
         setCambio(false)
       }else{
-        settemp((temp-32)* 5/9)
+        settemp((temp- 32) * 5/9)
         setCambio(true)
       }
     }
     const result=temp.toFixed(2)
   return (
-    <div className="App">
-      <h2><b>{clima.sys?.country},</b>{clima.name}</h2>
-      <img src={`http://openweathermap.org/img/wn/${clima.weather?.[0].icon}.png`} alt="" />
-      <h3>{result} {cambio? "°C":"°F"}</h3>
+    <div className="App"> 
+    <div className="Cuadro" >
+      
+      <div className="titulo">
+        <h2><b>{clima.sys?.country},</b>{clima.name}</h2>
+      </div>
+      <div className='caja'>
+        <img src={`http://openweathermap.org/img/wn/${clima.weather?.[0].icon}.png`} alt="" />
+        <h3>{result} {cambio? "°C":"°F"}</h3>
+      </div>
+      <div className='demas'>
+        <h3><b>HUMIDITY : </b>{clima.main?.humidity}%</h3>
+        <h3><b>PRESSURE : </b>{clima.main?.pressure} hPa</h3>
+      </div>
       <button onClick={convertHeight}>cambio</button>
+      </div>
+      
     </div>
   )
 }
